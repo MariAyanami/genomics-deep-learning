@@ -84,4 +84,38 @@ What does this mean?
 Main: [Metrics.md](Metrics.md)
 
 Once you have fit your Multitask Classifier to data,
-you can eva
+you can evaluate the Multitask Classifier by creating
+a Metric object.
+
+The following line of code creates a Metric object
+that can be used to assess the model. This metric
+computes a function, the `dc.metrics.roc_auc_score`,
+which computes the area under the receiver operating
+characteristic (ROC) curve (higher values mean fewer
+false positives).
+
+```
+metric = dc.metrics.Metric(dc.metrics.roc_auc_score, np.mean)
+```
+
+The first parameter is a function handle to the ROC AUC
+score function, provided by the deepchem library. 
+
+Because we have specified 12 classification tasks,
+we will actually have 12 numerical values for ROC AUC 
+for each model. The second argument to the `Metric()`
+constructor specifies how to aggregate these values.
+
+In this case we use the mean, but we could also use,
+e.g., max or min.
+
+See [Metrics.md](Metrics.md) for more about specific metrics.
+
+## MultiTask Classifier Links
+
+* Link to tag 2.1.0 of DeepChem on Github: <https://github.com/deepchem/deepchem/tree/2.1.0/deepchem/models>
+
+* Link to MultiClassifier source code on Github: <https://github.com/deepchem/deepchem/blob/2.1.0/deepchem/models/tensorgraph/fcnet.py#L26>
+
+* Link to TensorGraph (parent class of MultiClassifier) source code on Github: <https://github.com/deepchem/deepchem/blob/2.1.0/deepchem/models/tensorgraph/tensor_graph.py#L24>
+
