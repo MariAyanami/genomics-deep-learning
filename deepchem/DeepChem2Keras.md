@@ -23,4 +23,5 @@ to Keras also requires us to write our own data
 generator function(s).
 
 Most of the DeepChem network layers translate 
-directly to Keras lay
+directly to Keras layers.
+
